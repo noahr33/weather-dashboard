@@ -3,6 +3,10 @@ body {
     
 }
 
+main {
+    display: flex;
+}
+
 h1 {
     background-color: royalblue;
     color: white;
@@ -34,4 +38,19 @@ h2 {
 
 #search-btn, #search-box {
     margin: 8px;
+}
+
+#current {
+    width: 67%;
+}
+
+#weather {
+    display: flex;
+    width: 67%;
+    
+}
+
+#current {
+    margin: 20px;
+    width: 100%;
 }

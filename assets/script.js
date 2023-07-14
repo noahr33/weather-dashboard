@@ -9,8 +9,9 @@ function citySearch(event) {
     event.preventDefault()
     clearResults()
     var citySearch = cityInput.value
-    console.log(citySearch);
     getCurrentWeather(citySearch)
+    getFiveDay(citySearch)
+
 
     
 }
@@ -21,9 +22,19 @@ function getCurrentWeather(cityName) {
             return response.json();
         })
         .then(function(weatherData) {
-            console.log(weatherData);
             currentWeather(cityName, weatherData)
             
+        })
+}
+
+function getFiveDay(cityName) {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey + '&units=imperial&cnt=40')
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(weatherData) {
+            console.log(weatherData);
+            fiveDay(cityName, weatherData)
         })
 }
 
@@ -43,6 +54,10 @@ function currentWeather(cityName, weatherData) {
     var topSection = document.getElementById('current')
     topSection.appendChild(h2)
     topSection.appendChild(ul)
+}
+
+function fiveDay(cityName) {
+
 }
 
 function clearResults() {

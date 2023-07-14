@@ -53,4 +53,5 @@ h2 {
 #current {
     margin: 20px;
     width: 100%;
+    border: 3px solid black;
 }

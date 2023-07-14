@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    
 }
 
 h1 {
@@ -8,4 +9,29 @@ h1 {
     margin: 0;
     padding: 20px;
     text-align: center;
+}
+
+#city-input {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    border: 3px solid black;
+    height: 100vh;
+    
+   
+}
+
+h2 {
+    text-align: center;
+}
+
+#city-search {
+    display: flex ;
+    flex-direction: column;
+    
+
+}
+
+#search-btn, #search-box {
+    margin: 8px;
 }

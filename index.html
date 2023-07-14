@@ -5,11 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <script src="/assets/script.js"></script>
+    <main>
+        <section id="city-input" class="input-info">
+            <h2>Search for a city:</h2>
+            <form id="city-search">
+                <input id="search-box" type="text" placeholder="City Name">
+                <button id="search-btn" type="submit">Search</button>
+            </form>
+            <div id="history"></div>
+        </section>
+
+        <section class="weather">
+            <div id="current"></div>
+            <div id="five-day"></div>
+        </section>
+    </main>
+    
+
+    <script src="./assets/script.js"></script>
 </body>
 </html>

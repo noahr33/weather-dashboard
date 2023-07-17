@@ -32,9 +32,22 @@ function getFiveDay(cityName) {
         .then(function(response) {
             return response.json()
         })
-        .then(function(weatherData) {
-            console.log(weatherData);
-            fiveDay(cityName, weatherData)
+        .then(function(fiveDayData) {
+            var fiveSection = document.getElementById('five-day')
+            var h2 = document.createElement('h2')
+            h2.innerText = "5 Day Forecast:"
+            fiveSection.appendChild(h2)
+
+            var fiveDayForecast = fiveDayData.list
+            var days = [4, 12, 20, 28, 36]
+                days.forEach(function (i) {
+                    var forecast = fiveDayForecast[i]
+                    fiveDay(cityName, forecast)
+                    console.log(forecast);
+                    
+                })
+            
+        
         })
 }
 
@@ -56,16 +69,43 @@ function currentWeather(cityName, weatherData) {
     topSection.appendChild(ul)
 }
 
-function fiveDay(cityName) {
+function fiveDay(cityName, forecast) {
+    
+    
+    
+    for (var i = 0; i < forecast.length; i++) {
+        var fiveSection = document.getElementById('five-day')
+        var div = document.createElement('div')
+        var ul = document.createElement('ul')
+        var li1 = document.createElement('li')
+        var li2 = document.createElement('li')
+        var li3 = document.createElement('li')
+        var li4 = document.createElement('li')
 
+        li1.innerText = "Temp: " + forecast.dt_txt
+        li2.innerText = "Temp: " + forecast.main[0]
+        console.log(forecast.main);
+ 
+
+        ul.appendChild(li1)
+        ul.appendChild(li2)
+        ul.appendChild(li3)
+        ul.appendChild(li4)
+        div.appendChild(ul)
+        fiveSection.appendChild(div)
+    }
+
+    
 }
 
 function clearResults() {
     var clearCurrent = document.getElementById('current')
     clearCurrent.innerText = ""
+    var clearFiveDay = document.getElementById('five-day')
+    clearFiveDay.innerText = ""
 }
 
-getCurrentWeather('Milwaukee')
+
 
 // FIVE DAY!!!
 // 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey + '&units=imperial&cnt=3'

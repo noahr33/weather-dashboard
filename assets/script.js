@@ -81,11 +81,7 @@ function fiveDay(cityName, forecast) {
         var fiveIcon = document.createElement('img')
 
         div.className = "card"
-        ul.className = 'card-list'
-        li1.className = 'card-li'
-        li2.className = 'card-li'
-        li3.className = 'card-li'
-        li4.className = 'card-li'
+        
         
         fiveIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + forecast.weather[0].icon + "@2x.png")
         li1.innerText = forecast.dt_txt.split(" ")[0]

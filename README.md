@@ -5,6 +5,8 @@ The user inputs which city they want the weather for, and receives the current a
 
 ## Screenshot
 
+![img](./assets/Screenshot%202023-07-17%20at%2011.33.52%20PM.png)
+
 ***
 ## Deployable Link
 

@@ -48,10 +48,37 @@ h2 {
     display: flex;
     width: 67%;
     
+    
 }
 
 #current {
     margin: 20px;
     width: 100%;
     border: 3px solid black;
+    
+}
+
+#five-day {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+    justify-content: space-between;
+
+}
+
+.card-list {
+    justify-content: flex-start;
+}
+
+.card-li {
+    justify-content: flex-start;
+}
+
+.five-day {
+    display: block;
 }

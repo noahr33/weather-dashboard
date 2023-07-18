@@ -33,22 +33,21 @@ function getFiveDay(cityName) {
             return response.json()
         })
         .then(function(fiveDayData) {
-            var fiveSection = document.getElementById('five-day')
+            var fiveSection = document.getElementById('five-day-header')
             var h2 = document.createElement('h2')
             h2.innerText = "5 Day Forecast:"
             fiveSection.appendChild(h2)
+            h2.classList.add('five-day')
 
             var fiveDayForecast = fiveDayData.list
             var days = [4, 12, 20, 28, 36]
                 days.forEach(function (i) {
                     var forecast = fiveDayForecast[i]
                     fiveDay(cityName, forecast)
-                    console.log(forecast);
+                    // console.log(forecast);
                     
                 })
-            
-        
-        })
+             })
 }
 
 function currentWeather(cityName, weatherData) {
@@ -71,9 +70,9 @@ function currentWeather(cityName, weatherData) {
 
 function fiveDay(cityName, forecast) {
     
+    console.log(forecast);
     
-    
-    for (var i = 0; i < forecast.length; i++) {
+   
         var fiveSection = document.getElementById('five-day')
         var div = document.createElement('div')
         var ul = document.createElement('ul')
@@ -82,18 +81,21 @@ function fiveDay(cityName, forecast) {
         var li3 = document.createElement('li')
         var li4 = document.createElement('li')
 
-        li1.innerText = "Temp: " + forecast.dt_txt
-        li2.innerText = "Temp: " + forecast.main[0]
-        console.log(forecast.main);
- 
+        div.classList.add('card')
+        ul.classList.add('card-list')
+        li1.classList.add('card-li')
 
+        li1.innerText = forecast.dt_txt
+        li2.innerText = "Temp: " + forecast.main.temp
+        li3.innerText = "Humidity: " + forecast.main.humidity
+        li4.innerText = "Wind Speed: " + forecast.wind.speed
+        
         ul.appendChild(li1)
         ul.appendChild(li2)
         ul.appendChild(li3)
         ul.appendChild(li4)
         div.appendChild(ul)
         fiveSection.appendChild(div)
-    }
 
     
 }
@@ -103,6 +105,8 @@ function clearResults() {
     clearCurrent.innerText = ""
     var clearFiveDay = document.getElementById('five-day')
     clearFiveDay.innerText = ""
+    var clearFiveDayHeader = document.getElementById('five-day-header')
+    clearFiveDayHeader.innerText = ""
 }
 
 

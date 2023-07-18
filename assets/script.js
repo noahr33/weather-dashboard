@@ -78,6 +78,7 @@ function fiveDay(cityName, forecast) {
         var li2 = document.createElement('li')
         var li3 = document.createElement('li')
         var li4 = document.createElement('li')
+        var fiveIcon = document.createElement('img')
 
         div.className = "card"
         ul.className = 'card-list'
@@ -85,13 +86,15 @@ function fiveDay(cityName, forecast) {
         li2.className = 'card-li'
         li3.className = 'card-li'
         li4.className = 'card-li'
-
+        
+        fiveIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + forecast.weather[0].icon + "@2x.png")
         li1.innerText = forecast.dt_txt.split(" ")[0]
         li2.innerText = "Temp: " + forecast.main.temp
         li3.innerText = "Humidity: " + forecast.main.humidity
         li4.innerText = "Wind Speed: " + forecast.wind.speed
         
         ul.appendChild(li1)
+        ul.appendChild(fiveIcon)
         ul.appendChild(li2)
         ul.appendChild(li3)
         ul.appendChild(li4)

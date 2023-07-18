@@ -19,7 +19,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 33%;
-    border: 3px solid black;
+    
     height: 100vh;
     
    
@@ -40,43 +40,68 @@ h2 {
     margin: 8px;
 }
 
-#current {
-    width: 67%;
-}
 
 #weather {
     display: flex;
-    width: 67%;
+    width: 100%;
     
     
 }
 
+
 #current {
-    margin: 20px;
-    width: 100%;
+    margin: 20px 0;
+    width: 50%;
+    height: 300px;
     border: 3px solid black;
     
 }
 
+#current h2 {
+    text-align: left;
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+#current li {
+    list-style: none;
+    font-size: 20px;
+    margin: 5px 0;
+
+}
+
 #five-day {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    
+    
+    
 }
 
 .card {
     display: flex;
+    justify-content: flex-start;
     border: 1px solid black;
-    padding: 10px;
-    justify-content: space-between;
+    border-radius: 10px;
+    background-color: royalblue;
+    /* padding: 10px; */
+    margin: 5px;
+    
+    
 
 }
 
 .card-list {
-    justify-content: flex-start;
+    
+    align-items: flex-start;
 }
 
 .card-li {
-    justify-content: flex-start;
+    margin-top: 5px;
+    font-size: 18px;
+    list-style: none;
+    text-align: left;
+    color: white;
 }
 
 .five-day {

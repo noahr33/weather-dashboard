@@ -2,7 +2,7 @@ var apiKey = "5603099f302abf2bb4151111b32bcd9c"
 var cityInput = document.getElementById('search-box')
 var inputBtn = document.getElementById('search-btn')
 var searchForm = document.getElementById('city-search')
-
+var historyEl = document.getElementById('history')
 
 
 function citySearch(event) {
@@ -11,9 +11,7 @@ function citySearch(event) {
     var citySearch = cityInput.value
     getCurrentWeather(citySearch)
     getFiveDay(citySearch)
-
-
-    
+    cityButton(citySearch)   
 }
 
 function getCurrentWeather(cityName) {
@@ -22,8 +20,7 @@ function getCurrentWeather(cityName) {
             return response.json();
         })
         .then(function(weatherData) {
-            currentWeather(cityName, weatherData)
-            
+            currentWeather(cityName, weatherData)    
         })
 }
 
@@ -43,20 +40,23 @@ function getFiveDay(cityName) {
             var days = [4, 12, 20, 28, 36]
                 days.forEach(function (i) {
                     var forecast = fiveDayForecast[i]
-                    fiveDay(cityName, forecast)
-                    // console.log(forecast);
-                    
+                    fiveDay(cityName, forecast)   
                 })
              })
 }
 
 function currentWeather(cityName, weatherData) {
     var h2 = document.createElement('h2')
-    h2.innerText = cityName
+    h2.innerText = cityName.charAt(0).toUpperCase() + cityName.slice(1)
+    var weatherIcon = document.createElement('img')
+    weatherIcon.setAttribute('src', "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png")
     var ul = document.createElement('ul')
     var li1 = document.createElement('li')
     var li2 = document.createElement('li')
     var li3 = document.createElement('li')
+
+
+
     li1.innerText = "Temp: " + weatherData.main.temp
     li2.innerText = "Humidity: " + weatherData.main.humidity
     li3.innerText = "Wind Speed: " + weatherData.wind.speed
@@ -65,13 +65,11 @@ function currentWeather(cityName, weatherData) {
     ul.appendChild(li3)
     var topSection = document.getElementById('current')
     topSection.appendChild(h2)
+    topSection.appendChild(weatherIcon)
     topSection.appendChild(ul)
 }
 
 function fiveDay(cityName, forecast) {
-    
-    console.log(forecast);
-    
    
         var fiveSection = document.getElementById('five-day')
         var div = document.createElement('div')
@@ -81,11 +79,14 @@ function fiveDay(cityName, forecast) {
         var li3 = document.createElement('li')
         var li4 = document.createElement('li')
 
-        div.classList.add('card')
-        ul.classList.add('card-list')
-        li1.classList.add('card-li')
+        div.className = "card"
+        ul.className = 'card-list'
+        li1.className = 'card-li'
+        li2.className = 'card-li'
+        li3.className = 'card-li'
+        li4.className = 'card-li'
 
-        li1.innerText = forecast.dt_txt
+        li1.innerText = forecast.dt_txt.split(" ")[0]
         li2.innerText = "Temp: " + forecast.main.temp
         li3.innerText = "Humidity: " + forecast.main.humidity
         li4.innerText = "Wind Speed: " + forecast.wind.speed
@@ -95,9 +96,18 @@ function fiveDay(cityName, forecast) {
         ul.appendChild(li3)
         ul.appendChild(li4)
         div.appendChild(ul)
-        fiveSection.appendChild(div)
+        fiveSection.appendChild(div)   
+}
+
+function cityButton (citySearch) {
+    console.log(citySearch);
+    localStorage.setItem('cityName', citySearch)
+    var cityBtn = document.createElement('button')
+    cityBtn.innerText = localStorage.getItem('cityName')
+    historyEl.appendChild(cityBtn)
 
     
+
 }
 
 function clearResults() {

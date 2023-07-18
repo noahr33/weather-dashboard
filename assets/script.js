@@ -82,7 +82,6 @@ function fiveDay(cityName, forecast) {
 
         div.className = "card"
         
-        
         fiveIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + forecast.weather[0].icon + "@2x.png")
         li1.innerText = forecast.dt_txt.split(" ")[0]
         li2.innerText = "Temp: " + forecast.main.temp
@@ -104,9 +103,6 @@ function cityButton (citySearch) {
     var cityBtn = document.createElement('button')
     cityBtn.innerText = localStorage.getItem('cityName')
     historyEl.appendChild(cityBtn)
-
-    
-
 }
 
 function clearResults() {
@@ -118,9 +114,5 @@ function clearResults() {
     clearFiveDayHeader.innerText = ""
 }
 
-
-
-// FIVE DAY!!!
-// 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey + '&units=imperial&cnt=3'
 
 searchForm.addEventListener('submit', citySearch)
